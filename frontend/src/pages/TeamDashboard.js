@@ -27,7 +27,7 @@ export default function TeamDashboard() {
     refresh().catch(() => navigate("/"));
 
     const timer = setInterval(() => {
-      refresh().catch(() => {});
+      refresh().catch(() => { });
     }, 10000);
 
     return () => clearInterval(timer);
@@ -51,12 +51,12 @@ export default function TeamDashboard() {
           nextPhase.timeRemainingSec = timeLeft;
           if (timeLeft === 0) nextPhase.phase = "ended";
         }
-        
+
         // Auto-redirect to leaderboard if game ends
         if (nextPhase.phase === "ended" && location.pathname !== "/leaderboard") {
-            navigate("/leaderboard");
+          navigate("/leaderboard");
         }
-        
+
         return nextPhase;
       });
     }, 1000);
@@ -107,10 +107,10 @@ export default function TeamDashboard() {
           <h3 style={{ marginTop: 0 }}>Game Timer</h3>
           <div className="stats-grid" style={{ marginTop: 8 }}>
             <div className="stat-card"><div className="stat-label">Phase</div><div className="stat-value" style={{ fontSize: 18, color: livePhase.phase === "paused" ? "#fca5a5" : "#8ef8b9" }}>
-              {livePhase.phase === "recon" ? "Game Started" : 
-               livePhase.phase === "paused" ? "Admin Paused (Waiting to Resume)" : 
-               livePhase.phase === "ended" ? "Game Ended" : 
-               "Waiting for Admin"}
+              {livePhase.phase === "recon" ? "Game Started" :
+                livePhase.phase === "paused" ? "Admin Paused (Waiting to Resume)" :
+                  livePhase.phase === "ended" ? "Game Ended" :
+                    "Waiting for Admin"}
             </div></div>
             <div className="stat-card"><div className="stat-label">Time Remaining</div><div className="stat-value mono">{formatTimer(livePhase.timeRemainingSec)}</div></div>
           </div>
