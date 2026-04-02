@@ -62,6 +62,7 @@ export default function TeamDashboard() {
     }, 1000);
 
     return () => clearInterval(tick);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname, navigate]);
 
   if (!data?.team) return null;
