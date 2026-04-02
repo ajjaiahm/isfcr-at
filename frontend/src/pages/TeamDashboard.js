@@ -62,7 +62,7 @@ export default function TeamDashboard() {
     }, 1000);
 
     return () => clearInterval(tick);
-  }, []);
+  }, [location.pathname, navigate]);
 
   if (!data?.team) return null;
 
